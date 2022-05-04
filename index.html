@@ -8,28 +8,91 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Farm Services</title>
 </head>
 <body>
     <div class="header">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top pb-5">
             <div class="container-fluid row">
               <div class="navbar-header col-md-8">
                
               </div>
               <ul class="nav navbar-nav d-none col-xs-none float-left">
-                <li class="nav-item"><a href="#" class="text-primary display-4">Home</a></li>
-                <li class="nav-item"><a href="#" class="text-primary">About us</a></li>
-                <li class="nav-item"><a href="#" class="text-primary">Services</a></li>
-                <li class="nav-item"><a href="#" class="text-primary">Contact Us</a></li>
-                <li class="nav-item"><a href="#" class="text-primary">Login</a></li>
+                <li class="nav-item"><a href="#" class="" id="text">Home</a></li>
+                <li class="nav-item"><a href="#" class="" id="text">About us</a></li>
+                <li class="nav-item"><a href="#" class="" id="text">Services</a></li>
+                <li class="nav-item"><a href="#" class="" id="text">Contact Us</a></li>
+                <li class="nav-item"><a href="#" class="" data-toggle="modal" data-target="#myModal" id="text">Login</a></li>
               </ul>
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           </nav>
-          <h1 class="white">Welcome to Farm Services!!</h1><br>
+          <h1 class="text-dark heading p-5 m-5">Welcome to Farm Services  !!</h1>
           <h3 class="white">Farmer to Farmer Services along with expert Advice</h3><br>
-          <p class="">Dolor sint non sint cupidatat elit cillum eiusmod. Esse dolore esse voluptate anim adipisicing veniam consectetur fugiat. Duis reprehenderit non adipisicing in dolor ullamco cillum laboris occaecat Lorem. Irure sit quis laborum id.Est magna eiusmod id eiusmod qui cupidatat incididunt. Irure in laboris aliqua ea proident sint enim qui deserunt duis. Ut et cillum sit reprehenderit nulla culpa incididunt officia consequat exercitation reprehenderit ad laborum ea. Do magna esse laborum esse duis officia nisi. Ullamco ad non pariatur sunt sint sint aute ullamco.Culpa in reprehenderit velit non. Qui fugiat eiusmod anim proident veniam voluptate. Proident tempor aute officia ut tempor laborum veniam esse. Dolore commodo quis adipisicing sit labore veniam consequat excepteur. Aliqua sunt qui tempor dolore dolor ullamco non labore pariatur eiusmod dolor. Elit amet magna occaecat incididunt laborum eu aliqua mollit reprehenderit. Lorem minim enim Lorem dolor non fugiat voluptate aliqua.Laborum tempor veniam voluptate sint esse sit. Ullamco officia fugiat laborum enim sit reprehenderit mollit sunt do laborum eu laborum duis. Lorem reprehenderit duis incididunt ex. Elit excepteur deserunt elit nisi labore ut sint exercitation culpa consequat sunt. Adipisicing laboris exercitation esse ex sint cillum ea nostrud in non nisi esse ut.</p>
+          <p class="text-warning">Dolor sint non sint cupidatat elit cillum eiusmod. Esse dolore esse voluptate anim adipisicing veniam
+             consectetur fugiat. Duis reprehenderit non adipisicing in dolor ullamco cillum laboris occaecat Lorem. Irure sit 
+             quis laborum id.Est magna eiusmod id eiusmod qui cupidatat incididunt. Irure in laboris aliqua ea proident sint 
+             enim qui deserunt duis. Ut et cillum sit reprehenderit nulla culpa incididunt officia consequat exercitation 
+             reprehenderit ad laborum ea. Do magna esse laborum esse duis officia nisi. Ullamco ad non pariatur sunt sint 
+             sint aute ullamco.Culpa in reprehenderit velit non. Qui fugiat eiusmod anim proident veniam voluptate. Proident
+             tempor aute officia ut tempor laborum veniam esse. Dolore commodo quis adipisicing sit labore veniam consequat
+             excepteur. Aliqua sunt qui tempor dolore dolor ullamco non labore pariatur eiusmod dolor. Elit amet magna occaecat
+             incididunt laborum eu aliqua mollit reprehenderit. Lorem minim enim Lorem dolor non fugiat voluptate aliqua.
+             Laborum tempor veniam voluptate sint esse sit. Ullamco officia fugiat laborum enim sit reprehenderit mollit
+             sunt do laborum eu laborum duis. Lorem reprehenderit duis incididunt ex. Elit excepteur deserunt elit nisi 
+             labore ut sint exercitation culpa consequat sunt. Adipisicing laboris exercitation esse ex sint cillum ea 
+              nostrud in non nisi esse ut.</p>
     </div>
 
+    <div class="row m-5">
+      <div class="col-md-8 col-xs-12">
+        <p class="mx-auto">Mollit voluptate aute non et quis laborum. Nisi id enim proident deserunt cupidatat. Id pariatur anim amet duis. Mollit nulla sint amet aliqua elit mollit deserunt laborum proident ea mollit minim.</p>
+      </div>
+      <div class="col-md-4 col-xs-12 pl-5 ml-5"> <img src="equipement.jpg" class="image"></div>
+    </div>
+    <div class="footer row">
+      <div class="col-md-6 text-center">
+       <h3 class="text-muted"><b>Connect With Us</b></h3>
+       <div class="row mx-auto">
+       <i class="fa fa-facebook-official white col-md-1" style="font-size:32px"></i>
+       <i class="fa fa-phone white col-md-1" style="font-size:32px"></i>
+       <i class="fa fa-instagram white col-md-1" style="font-size:32px"></i>
+       <i class="fa fa-linkedin white col-md-1" style="font-size:32px"></i>
+       <i class="fa fa-envelope white col-md-1" style="font-size:32px"></i>
+       </div>
+      </div>
+      <div class="col-md-6  row">
+        <h3 class="text-muted"><b>Quick Links</b></h3>
+        <div class="col-md-6 text-left">
+          <h5><a href="" class="footerwhite">Home</a></h5>
+          <h5><a href="" class="footerwhite">About Us</a></h5>
+          <h5><a href="" class="footerwhite">Contact Us</a></h5>
+        </div>
+        <div class="col-md-6 text-left ">
+          <h5><a href="" class="footerwhite">List Product</a></h5>
+        <h5><a href="" class="footerwhite">Rent Product</a></h5>
+        <h5><a href="" class="footerwhite">Any Query</a></h5>
+      </div>
+      </div>
+    </div>
 </body>
 </html>
