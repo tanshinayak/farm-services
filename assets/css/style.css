@@ -113,6 +113,48 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+.modal {
+  z-index: 9999
+}
+.modal-title{
+  color:#06c525;
+  font-weight: bold;
+  text-align: left;
+}
+.btn-default:hover{
+background-color: #06c525;
+color: white;
+}
+input[type=text], input[type=password], input[type=tel] {
+  width:auto;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-left: 7%;
+}
+.right{
+  text-align: right;
+}
+
+/* Set a style for all buttons */
+.loginbutton {
+  background-color: #06c525;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  margin-left: 7%;
+  margin-right: auto;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
 #header {
   transition: all 0.5s;
   z-index: 997;

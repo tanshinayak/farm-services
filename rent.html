@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 
   <!-- Template Main CSS File -->
@@ -42,7 +43,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+  <header id="header" class="sticky-top bg-dark">
     <div class="container d-flex align-items-center justify-content-between">
 
       <h1 class="logo"><a href="index.html">Farm Services</a></h1>
@@ -52,8 +53,8 @@
       
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto active" href="index.html#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
           <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="rent.html">Rent Product</a></li>
@@ -138,8 +139,8 @@
               <label for="uname" ><b>Username</b></label>
               <input type="text" placeholder="Enter Username" name="uname" required>
               <br>
-              <label for="name" ><b>Name</b></label>
-              <input type="text" placeholder="Enter Name" name="name" required>
+              <label for="uname" ><b>Name</b></label>
+              <input type="text" placeholder="Enter Name" name="uname" required>
               <br>
               <label for="phone"><b>Phone Number</b></label>
               <input type="tel" placeholder="Enter Phone number" name="phone" required>
@@ -150,8 +151,8 @@
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="psw" required>
               <br>
-              <label for="cpsw"><b>Confirm Password</b></label>
-              <input type="password" placeholder="Confirm Password" name="cpsw" required>
+              <label for="psw"><b>Confirm Password</b></label>
+              <input type="password" placeholder="Confirm Password" name="psw" required>
               <br>
               <button type="submit" class="loginbutton">Sign Up</button>
               <br>
@@ -169,153 +170,46 @@
   
     </div>
   </div>
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
-      <h1>Rent. Pay. Grow.</h1>
-      <h2>Here you can rent farming equipments and also learn about best farming practices</h2>
-      <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Rent Equipment</a>
-        <a href="#about" class="glightbox btn-watch-video"><span>Know More</span></a>
-      </div>
-    </div>
-  </section><!-- End Hero -->
 
   <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-     
-
-        <div class="row">
-
-          <div class="col-lg-6 video-box align-self-baseline" data-aos="zoom-in" data-aos-delay="100">
-            <img src="equipment.jpg" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-6 pt-3 pt-lg-0 content">
-            <h3>Farm Services</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bx bx-check-double"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</li>
-              <li><i class="bx bx-check-double"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</li>
-              <li><i class="bx bx-check-double"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</li>
-              <li><i class="bx bx-check-double"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</li>
+   <section>
+       <div class="row">
+        <div class="dropdown col-md-9">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Price (Low - High)</a></li>
+              <li><a href="#">Price (High - Low)</a></li>
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= About Boxes Section ======= -->
-    <section id="about-boxes" class="about-boxes">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="card">
-              <img src="assets/img/mission.jpg" class="card-img-top" alt="...">
-              <div class="card-icon">
-                <i class="ri-brush-4-line"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Mission</a></h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="card">
-              <img src="assets/img/plan.jpg" class="card-img-top" alt="...">
-              <div class="card-icon">
-                <i class="ri-calendar-check-line"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Plan</a></h5>
-                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="card">
-              <img src="assets/img/vision.jpg" class="card-img-top" alt="...">
-              <div class="card-icon">
-                <i class="ri-movie-2-line"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Vision</a></h5>
-                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet. </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Boxes Section -->
-
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Check our Services</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-md-6">
-            <div class="icon-box">
-              <i class="bi bi-gear"></i>
-              <h4><a href="#">Rent Equipment</a></h4>
-              <p>Rent farming equipments according to your need pay accordingly.</p>
-            </div>
-          </div>
-          <div class="col-md-6 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="bi bi-clipboard-check"></i>
-              <h4><a href="#">List Product for Rent</a></h4>
-              <p>List equipments for rental purpose for that extra income when you don't use them.</p>
-            </div>
-          </div>
-          <div class="col-md-6 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="bi bi-tools"></i>
-              <h4><a href="#">Know about Farming Equipments</a></h4>
-              <p>You can learn more about farming equipments and their usage.</p>
-            </div>
-          </div>
-          <div class="col-md-6 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="bi bi-brightness-high"></i>
-              <h4><a href="#">Know About Best Farming Practices</a></h4>
-              <p>Learn about best farming practices from around the globe according to soil type, available resources and requirements.</p>
-            </div>
           </div>
           
-        </div>
-
+        <div class="input-group col-md-3">
+            <div class="form-outline row">
+              <input type="search" id="form1" class=" col-md-4" placeholder="Search"/>
+              <button type="button" class="btn btn-primary col-md-1">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+       </div>
+   </section>
+    <!-- ======= About Section ======= -->
+    <section>
+      <div class="container row" >
+        <div class="card col-md-4 col-xs-6" >
+            <img class="card-img-top" src="equipment.jpg" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">John Doe</h4>
+              <p class="card-text">Some example text.</p>
+              <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+          </div>
       </div>
-    </section><!-- End Services Section -->
+    </section>
+</main>
 
-    
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
