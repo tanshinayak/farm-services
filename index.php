@@ -40,14 +40,14 @@
 </head>
 
 <body>
-
+<?php session_start(); ?>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Farm Services</a></h1>
+      <h1 class="logo"><a href="index.php">Farm Services</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.php" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
      
       
       <nav id="navbar" class="navbar">
@@ -56,18 +56,33 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="rent.html">Rent Product</a></li>
-              <li><a href="#">List Product</a></li>
+              <li><?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">Rent Equipment</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">Rent Equipment</a>'
+      ?></li>
+              <li><?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">List Product</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">List Product</a>'
+      ?></li>
               <li><a href="#">Know about equipment</a></li>
               <li><a href="#">Know more about best farming practices</a></li>
             </ul>
           </li>
+          
           <li><a class="nav-link scrollto" href="ContactUs.html">Contact</a></li>
-          <li><a class="getstarted scrollto"  data-toggle="modal" data-target="#login">Login</a></li>
+          <?php if(!isset($_SESSION['username']))
+    echo '<a class="getstarted scrollto"  data-toggle="modal" data-target="#login">Login</a>
+          <a class="getstarted scrollto"  data-toggle="modal" data-target="#signup">Register</a>'; ?> 
 
-          <li><a class="getstarted scrollto" data-toggle="modal" data-target="#signup">SignUp</a></li>
+    <?php if(isset($_SESSION['username']))
+    echo '<li><a href="rent.php">Dashboard</a> </li>
+    <li><a href="logout.php">Logout</a></li>'; ?>
+          <!--<li><a class="getstarted scrollto"  data-toggle="modal" data-target="#login">Login</a></li>
+
+          <li><a class="getstarted scrollto" data-toggle="modal" data-target="#signup">SignUp</a></li>-->
         </ul>         <i class="bi bi-list mobile-nav-toggle"></i>
-        
       </nav>
     <!-- .navbar -->
         
@@ -86,7 +101,7 @@
         <button type="button" class="close col-md-2 col-xs-2 float-right" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="action_page.php" method="post">
+          <form action="login.php" method="post">
           
             <div class="container">
               <label for="uname" class="mx-5 "><b>Username</b></label>
@@ -132,7 +147,7 @@
         <button type="button" class="close col-md-2 col-xs-2 float-right" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="action_page.php" method="post">
+          <form action="signup.php" method="post">
           
             <div class="container">
               <label for="uname" ><b>Username</b></label>
@@ -175,7 +190,11 @@
       <h1>Rent. Pay. Grow.</h1>
       <h2>Here you can rent farming equipments and also learn about best farming practices</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Rent Equipment</a>
+      <?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php" class="btn-get-started scrollto">Rent Equipment</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login" class="btn-get-started scrollto">Rent Equipment</a>'
+      ?>
         <a href="#about" class="glightbox btn-watch-video"><span>Know More</span></a>
       </div>
     </div>
@@ -279,14 +298,22 @@
           <div class="col-md-6">
             <div class="icon-box">
               <i class="bi bi-gear"></i>
-              <h4><a href="#">Rent Equipment</a></h4>
+              <h4><?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">Rent Equipment</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">Rent Equipment</a>'
+      ?></h4>
               <p>Rent farming equipments according to your need pay accordingly.</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
               <i class="bi bi-clipboard-check"></i>
-              <h4><a href="#">List Product for Rent</a></h4>
+              <h4><?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">List Product</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">List Product</a>'
+      ?></h4>
               <p>List equipments for rental purpose for that extra income when you don't use them.</p>
             </div>
           </div>
@@ -340,8 +367,8 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h3>Useful Links</h3>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="ContactUs.html">Contact Us</a></li>
             </ul>
           </div>
@@ -349,8 +376,16 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h3>Our Services</h3>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="rent.html">Rent Equipment</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Provide product for rent</a></li>
+              <li><i class="bx bx-chevron-right"></i> <?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">Rent Equipment</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">Rent Equipment</a>'
+      ?></li>
+              <li><i class="bx bx-chevron-right"></i> <?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">List products for rent</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">List products for rent</a>'
+      ?></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Best use of equipments</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Best Farming Practices</a></li>
             </ul>

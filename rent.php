@@ -41,32 +41,50 @@
 </head>
 
 <body>
-
+<?php session_start(); ?>
   <!-- ======= Header ======= -->
   <header id="header" class="sticky-top bg-dark">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Farm Services</a></h1>
+      <h1 class="logo"><a href="index.php">Farm Services</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.php" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
      
       
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
+          <li><a class="nav-link scrollto active" href="index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
           <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="rent.html">Rent Product</a></li>
-              <li><a href="#">List Product</a></li>
+              <li><?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">Rent Equipment</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">Rent Equipment</a>'
+      ?></li>
+              <li><?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">List Product</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">List Product</a>'
+      ?></li>
               <li><a href="#">Know about equipment</a></li>
               <li><a href="#">Know more about best farming practices</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="ContactUs.html">Contact</a></li>
-          <li><a class="getstarted scrollto"  data-toggle="modal" data-target="#login">Login</a></li>
+          <?php if(!isset($_SESSION['username']))
+    echo '<a class="getstarted scrollto"  data-toggle="modal" data-target="#login">Login</a>
+          <a class="getstarted scrollto"  data-toggle="modal" data-target="#signup">Register</a>'; ?> 
 
-          <li><a class="getstarted scrollto" data-toggle="modal" data-target="#signup">SignUp</a></li>
+    <?php if(isset($_SESSION['username']))
+    echo '<li class="dropdown"><a href="#"><span>Dashboard</span> <i class="bi bi-chevron-down"></i></a>
+    <ul>
+      <li><a href="#listedproducts">Products Listed by you</a></li>
+      <li><a href="#availableproducts">Products Available</a></li>
+      <li><a href="#bookedproducts">Booked Equipments</a></li>
+    </ul>
+  </li>
+    <li><a href="logout.php">Logout</a></li>'; ?>
         </ul>         <i class="bi bi-list mobile-nav-toggle"></i>
         
       </nav>
@@ -87,7 +105,7 @@
         <button type="button" class="close col-md-2 col-xs-2 float-right" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="action_page.php" method="post">
+          <form action="login.php" method="post">
           
             <div class="container">
               <label for="uname" class="mx-5 "><b>Username</b></label>
@@ -133,14 +151,14 @@
         <button type="button" class="close col-md-2 col-xs-2 float-right" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="action_page.php" method="post">
+          <form action="signup.php" method="post">
           
             <div class="container">
               <label for="uname" ><b>Username</b></label>
               <input type="text" placeholder="Enter Username" name="uname" required>
               <br>
-              <label for="uname" ><b>Name</b></label>
-              <input type="text" placeholder="Enter Name" name="uname" required>
+              <label for="name" ><b>Name</b></label>
+              <input type="text" placeholder="Enter Name" name="name" required>
               <br>
               <label for="phone"><b>Phone Number</b></label>
               <input type="tel" placeholder="Enter Phone number" name="phone" required>
@@ -170,20 +188,28 @@
   
     </div>
   </div>
-
-  <main id="main">
+  <?php
+      
+      // Include file which makes the
+      // Database Connection.
+      include 'config.php';
+  ?>
    <section>
-       <div class="row">
-        <div class="dropdown col-md-9">
+       <div class="row container-fluid">
+        <!--<div class="dropdown col-md-9">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort
             </button>
             <ul class="dropdown-menu">
               <li><a href="#">Price (Low - High)</a></li>
               <li><a href="#">Price (High - Low)</a></li>
             </ul>
+          </div>-->
+          <div class="dropdown col-md-6 m-5">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addform">List products for Rent
+            </button>
           </div>
           
-        <div class="input-group col-md-3">
+        <div class="input-group col-md-3 p-5">
             <div class="form-outline row">
               <input type="search" id="form1" class=" col-md-4" placeholder="Search"/>
               <button type="button" class="btn btn-primary col-md-1">
@@ -193,20 +219,116 @@
           </div>
        </div>
    </section>
-    <!-- ======= About Section ======= -->
-    <section>
-      <div class="container row" >
-        <div class="card col-md-4 col-xs-6" >
-            <img class="card-img-top" src="equipment.jpg" alt="Card image">
+   <div id="addform" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header row">
+        <h3 class="modal-title col-md-8 col-xs-8">Add Product Details</h3>
+        <div class="col-md-2 col-xs-2"></div>
+        <button type="button" class="close col-md-2 col-xs-2 float-right" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="addproduct.php" method="post">
+          
+            <div class="container">
+              <label for="name" ><b>Name</b></label>
+              <input type="text" placeholder="Enter Name" name="name" required>
+              <br>
+              <label for="price"><b>Price</b></label>
+              <input type="text" placeholder="Enter Price" name="price" required>
+              <br>
+              <label for="days"><b>No. of Days</b></label>
+              <input type="number" placeholder="Number of Days" name="days" required>
+              <br>
+              <label for="date"><b>Date</b></label>
+              <input type="date" placeholder="Date" name="date" required>
+              <br>
+              <label for="description"><b>Description</b></label>
+              <textarea type="text" placeholder="Description" name="description" required> </textarea>
+              <br>
+              <label for="photo"><b>Photo</b></label>
+              <input type="file" name="photo" required>
+              <br>
+              <button type="submit" class="loginbutton">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+    <!-- ======= Products Listed  ======= -->
+    <?php $username = $_SESSION['username'];
+    $sql = "SELECT id, heading, price, days, date, description, address, photo FROM product where username='$username'";
+			$resultset = mysqli_query($conn, $sql);		?>
+      <section>
+      <div class="row container-fluid" id='listedproducts'>	
+        <h3>Products Listed By You </h3>
+		<?php	while( $record = mysqli_fetch_assoc($resultset) ) {
+			?>
+        <div class="card col-md-3 col-xs-6 mx-5" >
+            <img class="card-img-top" src="<?php echo $record['photo']; ?>" alt="Card image">
             <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
+              <h4 class="card-title"><?php echo $record['heading']; ?></h4>
+              <p class="card-text"><?php echo $record['description']; ?>
+            <br>
+            <div class="row"><h5 class="col-md-4">Date:</h5><p class="col-md-8"><?php echo $record['date']; ?></p></div>
+          <div class="row"><h5 class="col-md-4">No. of Days:</h5><p class="col-md-8"><?php echo $record['days']; ?></p></div>
+          <div class="row"><h5 class="col-md-4">Address:</h5><p class="col-md-8"><?php echo $record['address']; ?></p></div>
+          <a href="#" class="btn cardbutton">Edit</a>    
+          <a href="#" class="btn cardbutton">Remove</a>
             </div>
           </div>
-      </div>
+    <?php } ?>
+    <!-- ======= Products Avaialable  ======= -->
+    <?php $sql = "SELECT id, heading, price, days, date, description, address, photo FROM product where not username= '$username';";
+			$resultset = mysqli_query($conn, $sql);		?>
+      <section>
+      <div class="row container-fluid" id='availableproducts'>	
+        <h3>Products Available </h3>
+		<?php	while( $record = mysqli_fetch_assoc($resultset) ) {
+			?>
+        <div class="card col-md-3 col-xs-6 mx-5" >
+            <img class="card-img-top" src="<?php echo $record['photo']; ?>" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title"><?php echo $record['heading']; ?></h4>
+              <p class="card-text"><?php echo $record['description']; ?>
+            <br>
+            <div class="row"><h5 class="col-md-4">Date:</h5><p class="col-md-8"><?php echo $record['date']; ?></p></div>
+          <div class="row"><h5 class="col-md-4">No. of Days:</h5><p class="col-md-8"><?php echo $record['days']; ?></p></div>
+          <div class="row"><h5 class="col-md-4">Address:</h5><p class="col-md-8"><?php echo $record['address']; ?></p></div>
+              <a href="#" class="btn cardbutton">Book</a>
+            </div>
+          </div>
+    <?php } ?>
+    <!-- ======= Products Booked  ======= -->
+    <?php $sql = "SELECT id, heading, price, days, date, description, address, photo FROM bookedproducts where username= '$username';";
+			$resultset = mysqli_query($conn, $sql);		?>
+      <section>
+      <div class="row container-fluid" id='availableproducts'>	
+        <h3>Products Booked By You </h3>
+		<?php	while( $record = mysqli_fetch_assoc($resultset) ) {
+			?>
+        <div class="card col-md-3 col-xs-6 mx-5" >
+            <img class="card-img-top" src="<?php echo $record['photo']; ?>" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title"><?php echo $record['heading']; ?></h4>
+              <p class="card-text"><?php echo $record['description']; ?>
+            <br>
+            <div class="row"><h5 class="col-md-4">Date:</h5><p class="col-md-8"><?php echo $record['date']; ?></p></div>
+          <div class="row"><h5 class="col-md-4">No. of Days:</h5><p class="col-md-8"><?php echo $record['days']; ?></p></div>
+          <div class="row"><h5 class="col-md-4">Address:</h5><p class="col-md-8"><?php echo $record['address']; ?></p></div>
+              <a href="#" class="btn cardbutton">Book</a>
+            </div>
+          </div>
+    <?php } ?> -->
+    </div>
     </section>
-</main>
 
  <!-- ======= Footer ======= -->
  <footer id="footer">
@@ -234,8 +356,8 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h3>Useful Links</h3>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="ContactUs.html">Contact Us</a></li>
             </ul>
           </div>
@@ -243,8 +365,16 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h3>Our Services</h3>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="rent.html">Rent Equipment</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Provide product for rent</a></li>
+              <li><i class="bx bx-chevron-right"></i> <?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">Rent Equipment</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">Rent Equipment</a>'
+      ?></li>
+              <li><i class="bx bx-chevron-right"></i> <?php if(isset($_SESSION['username']))
+      echo'<a href="rent.php">List products for rent</a>';
+      else
+      echo'<a data-toggle="modal" data-target="#login">List products for rent</a>'
+      ?></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Best use of equipments</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Best Farming Practices</a></li>
             </ul>
